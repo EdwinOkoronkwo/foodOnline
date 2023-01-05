@@ -26,7 +26,8 @@
 
                                     <hr>
                                     <h6>Menu Categories</h6>
-                                    <a href="#" class="btn btn-success float-right m-1"><i class="fa fa-plus" aria-hidden="true"></i> Add Food</a>
+                                    {% if categories %}
+                                    <a href="{% url 'add_food' %}" class="btn btn-success float-right m-1"><i class="fa fa-plus" aria-hidden="true"></i> Add Food</a>
                                     <a href="{% url 'add_category' %}" class="btn btn-info float-right m-1"><i class="fa fa-plus" aria-hidden="true"></i> Add Category</a>
                                     <table class="table table-hover table-borderless">
                                         <tbody>
@@ -41,7 +42,7 @@
                                                 
                                             </td>
                                             <td>
-                                                <a href="{% url 'edit_category' cat.id %}">
+                                                <a href="{% url 'edit_category' cat.id %}" style="color: unset;">
                                                     <i class="fa fa-pencil" aria-hidden="true"></i> 
                                                 </a>
                                                 &nbsp; &nbsp; &nbsp;
@@ -59,6 +60,16 @@
             
                                         </tbody>
                                       </table>
+                                      {% else %}
+                                      <h5 class="text-center">No Categories found!</h5>
+                                      <div class="text-center">
+                                        <a href="{% url 'add_category' %}" class="btn btn-success">
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            Add Category
+                                        </a>
+                                      </div>
+
+                                      {% endif %}
 									
 								</div>
 							</div>
